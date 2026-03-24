@@ -6,10 +6,9 @@ import org.qateam.capital.ui.components.Header;
 import org.qateam.capital.utils.URLBuilder;
 
 import java.net.URI;
-import java.net.URL;
 
 public class BasePage {
-    protected final String basePageUrl = "https://capital.com/en-au";
+    protected final String basePageUrl = "https://capital.com";
     protected final Page page;
     protected final License license;
     protected final Header header;
@@ -21,7 +20,7 @@ public class BasePage {
     }
 
     public void navigate(){
-        URI.create()
-        this.page.navigate(URLBuilder.build(basePageUrl, license.));
+        URI.create(basePageUrl);
+        this.page.navigate(URLBuilder.build(basePageUrl, license.path));
     }
 }
