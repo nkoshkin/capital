@@ -1,9 +1,11 @@
-package org.qateam.capital.ui;
+package org.qateam.capital.ui.learn;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.qateam.capital.ui.BaseTest;
 import org.qateam.capital.ui.components.banners.CookieBanner;
 
-public class LearnTest extends BaseTest{
+public class LearnTest extends BaseTest {
     private String uri = "https://capital.com/en-au";
 
     @Test

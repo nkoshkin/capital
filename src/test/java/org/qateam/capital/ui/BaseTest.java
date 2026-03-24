@@ -19,7 +19,12 @@ public abstract class BaseTest {
         browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
                 .setSlowMo(500)
                 .setChannel("chromium")
-                .setArgs(List.of("--start-maximized"))
+                .setArgs(List.of(
+                        "--start-maximized",
+                        "--disable-blink-features=AutomationControlled",
+                        "--disable-dev-shm-usage",
+                        "--no-sandbox"
+                ))
                 .setHeadless(false));
     }
 
@@ -31,9 +36,12 @@ public abstract class BaseTest {
 
     @AfterEach
     void closePage(){
-        // препроверить что именно закрывать
-        browserContext.close();
-        page.close();
+        if (browserContext != null){
+            browserContext.close();
+        } else {
+
+        }
+
     }
 
     @AfterAll

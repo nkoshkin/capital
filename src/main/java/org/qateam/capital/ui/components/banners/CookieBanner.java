@@ -6,15 +6,15 @@ import com.microsoft.playwright.options.AriaRole;
 import org.qateam.capital.ui.components.BaseComponent;
 
 public class CookieBanner extends BaseComponent {
-    private static final String rootSelector = "//div[@data-sentry-component='CookieBannerInitiator']";
+    private static final String componentSelector = "//div[@data-sentry-component='CookieBannerInitiator']";
 
     public CookieBanner(Page page) {
-        super(page, rootSelector);
+        super(page, componentSelector);
     }
 
 
     public Locator getButtonReject(){
-        return rootLocator.getByRole(AriaRole.BUTTON, new Locator.GetByRoleOptions().setName("Отклонить все"));
+        return componentLocator.getByRole(AriaRole.BUTTON, new Locator.GetByRoleOptions().setName("Отклонить все"));
     }
 
 }

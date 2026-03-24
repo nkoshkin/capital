@@ -4,9 +4,9 @@ import com.microsoft.playwright.Page;
 
 public class Header extends BaseComponent{
 
-    private static final String rootSelector = "//header";
+    private static final String componentSelector = "//header";
 
     public Header(Page page) {
-        super(page, rootSelector);
+        super(page, componentSelector);
     }
 }
