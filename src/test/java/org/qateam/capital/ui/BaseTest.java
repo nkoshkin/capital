@@ -35,11 +35,9 @@ public abstract class BaseTest {
     }
 
     @AfterEach
-    void closePage(){
-        if (browserContext != null){
+    void closeContext(){
+        if (browserContext != null) {
             browserContext.close();
-        } else {
-
         }
 
     }
