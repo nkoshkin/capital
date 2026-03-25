@@ -26,6 +26,7 @@ ext {
     slf4jVersion = '2.0.17'
     allureVersion = '2.25.0'
     aspectjVersion = '1.9.25.1'
+    jacksonYamlVersion = '3.1.0'
 }
 
 dependencies {
@@ -42,6 +43,8 @@ dependencies {
 
     implementation "org.slf4j:slf4j-api:$slf4jVersion"
     implementation "org.slf4j:slf4j-simple:$slf4jVersion"
+
+    implementation "tools.jackson.dataformat:jackson-dataformat-yaml:$jacksonYamlVersion"
 }
 
 allure {

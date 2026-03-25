@@ -2,7 +2,6 @@ package org.qateam.capital.ui.components.header;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.AriaRole;
 import org.qateam.capital.ui.components.BaseComponent;
 
 public class Menu extends BaseComponent<Menu> {
