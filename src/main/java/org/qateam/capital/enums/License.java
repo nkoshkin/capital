@@ -1,7 +1,11 @@
-package org.qateam.capital.licenses;
+package org.qateam.capital.enums;
 
 public enum License {
-    ASIC("ASIC", "/en-au");
+    ASIC("ASIC", "/en-au"),
+    FCA("FCA", "/en-gb"),
+    SCA("SCA", "/en-ae"),
+    SCB("SCB", ""),
+    CYSEC("CYSEC", "");
 
     public final String name;
     public final String path;

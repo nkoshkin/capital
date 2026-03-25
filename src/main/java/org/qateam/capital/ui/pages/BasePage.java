@@ -1,11 +1,10 @@
 package org.qateam.capital.ui.pages;
 
 import com.microsoft.playwright.Page;
-import org.qateam.capital.licenses.License;
-import org.qateam.capital.ui.components.Header;
+import org.qateam.capital.enums.License;
+import org.qateam.capital.ui.components.header.Header;
 import org.qateam.capital.utils.URLBuilder;
 
-import java.net.URI;
 
 public class BasePage {
     protected final String basePageUrl = "https://capital.com";
@@ -20,7 +19,6 @@ public class BasePage {
     }
 
     public void navigate(){
-        URI.create(basePageUrl);
         this.page.navigate(URLBuilder.build(basePageUrl, license.path));
     }
 }

@@ -1,20 +1,27 @@
 package org.qateam.capital.ui.components.banners;
 
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.AriaRole;
 import org.qateam.capital.ui.components.BaseComponent;
 
-public class CookieBanner extends BaseComponent {
-    private static final String componentSelector = "//div[@data-sentry-component='CookieBannerInitiator']";
+public class CookieBanner extends BaseComponent<CookieBanner> {
+    private static final String componentSelector = "div[data-type='cb'] > .ot-sdk-container";
+    private final String BUTTON_REJECT_ALL_SELECTOR = "#onetrust-reject-all-handler";
+    private final String BUTTON_ACCEPT_ALL_SELECTOR = "#onetrust-accept-btn-handler";
+    private final String BUTTTON_CONFIG_COOKIES_SELECTOR = "#onetrust-pc-btn-handler";
+
 
     public CookieBanner(Page page) {
         super(page, componentSelector);
     }
 
+    public CookieBanner rejectAll(){
+        clickButtonBySelector(BUTTON_REJECT_ALL_SELECTOR);
+        return this;
+    }
 
-    public Locator getButtonReject(){
-        return componentLocator.getByRole(AriaRole.BUTTON, new Locator.GetByRoleOptions().setName("Отклонить все"));
+    public CookieBanner acceptAll(){
+        clickButtonBySelector(BUTTON_ACCEPT_ALL_SELECTOR);
+        return this;
     }
 
 }

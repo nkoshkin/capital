@@ -17,7 +17,7 @@ public abstract class BaseTest {
     void setUp(){
         playwright = Playwright.create();
         browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
-                .setSlowMo(500)
+                .setSlowMo(1000)
                 .setChannel("chromium")
                 .setArgs(List.of(
                         "--start-maximized",

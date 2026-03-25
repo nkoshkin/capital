@@ -1,20 +1,51 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version "3.0.2"
 }
 
 group = 'org.qateam'
 version = '1.0-SNAPSHOT'
+description = 'Auto tests for Capital.com'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
 
 repositories {
     mavenCentral()
 }
 
+ext {
+    junitBomVersion = '6.0.3'
+    playwrightVersion = '1.58.0'
+    slf4jVersion = '2.0.17'
+    allureVersion = '2.25.0'
+    aspectjVersion = '1.9.25.1'
+}
+
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
+    implementation platform("org.junit:junit-bom:$junitBomVersion")
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-    implementation 'com.microsoft.playwright:playwright:1.58.0'
+    implementation "com.microsoft.playwright:playwright:$playwrightVersion"
+
+    implementation platform("io.qameta.allure:allure-bom:$allureVersion")
+    implementation "io.qameta.allure:allure-junit5"
+    implementation "io.qameta.allure:allure-attachments"
+    runtimeOnly "org.aspectj:aspectjweaver:$aspectjVersion"
+
+    implementation "org.slf4j:slf4j-api:$slf4jVersion"
+    implementation "org.slf4j:slf4j-simple:$slf4jVersion"
+}
+
+allure {
+    version = allureVersion
 }
 
 test {
