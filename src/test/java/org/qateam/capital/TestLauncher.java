@@ -82,10 +82,10 @@ public class TestLauncher {
         System.out.println("TEST EXECUTION SUMMARY");
         System.out.println("========================================");
         System.out.printf("Total tests:    %d%n", summary.getTestsFoundCount());
-        System.out.printf("Successful:     %d ✅%n", summary.getTestsSucceededCount());
-        System.out.printf("Failed:         %d ❌%n", summary.getTestsFailedCount());
-        System.out.printf("Skipped:        %d ⏭️%n", summary.getTestsSkippedCount());
-        System.out.printf("Total time:     %d ms%n", summary.getTimeFinished() - summary.getTimeStarted());
+        System.out.printf("Successful:     %d%n", summary.getTestsSucceededCount());
+        System.out.printf("Failed:         %d%n", summary.getTestsFailedCount());
+        System.out.printf("Skipped:        %d%n", summary.getTestsSkippedCount());
+        System.out.printf("Total time:     %d%n", summary.getTimeFinished() - summary.getTimeStarted());
         System.out.println("========================================");
     }
 }
