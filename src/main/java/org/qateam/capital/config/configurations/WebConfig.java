@@ -1,5 +1,11 @@
 package org.qateam.capital.config.configurations;
 
-public class WebConfig {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public record WebConfig(
+
+        @JsonProperty("url")
+        String url
+) {
 
 }

@@ -1,0 +1,32 @@
+web:
+  url: https://capital.com
+
+browser:
+  headless: true
+  slow_mo: 300
+  channel: chromium
+  viewport_width: 1920
+  viewport_height: 1080
+  locale: en-GB
+  timezone: Europe/London
+  args:
+    - --no-sandbox
+    - --disable-dev-shm-usage
+    - --disable-setuid-sandbox
+    - --disable-gpu
+    - --disable-features=VizDisplayCompositor
+    - --disable-blink-features=AutomationControlled
+    - --disable-web-security
+    - --disable-background-timer-throttling
+    - --disable-backgrounding-occluded-windows
+    - --disable-renderer-backgrounding
+    - --start-maximized
+
+timeouts:
+  default: 30000
+  page_load: 60000
+  element: 10000
+
+retry:
+  attempts: 3
+  delay: 1000

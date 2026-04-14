@@ -8,11 +8,11 @@ version = '1.0-SNAPSHOT'
 description = 'Auto tests for Capital.com'
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_25
-    targetCompatibility = JavaVersion.VERSION_25
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 
     toolchain {
-        languageVersion = JavaLanguageVersion.of(25)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -31,8 +31,8 @@ ext {
 
 dependencies {
     implementation platform("org.junit:junit-bom:$junitBomVersion")
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'org.junit.platform:junit-platform-launcher'
 
     implementation "com.microsoft.playwright:playwright:$playwrightVersion"
 
@@ -49,8 +49,34 @@ dependencies {
 
 allure {
     version = allureVersion
+
+}
+
+tasks.register('fatJar', Jar) {
+    archiveFileName = 'capital-tests.jar'
+    manifest {
+        attributes 'Main-Class': 'org.qateam.capital.TestLauncher'
+    }
+    from sourceSets.main.output
+    from sourceSets.test.output
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA'
 }
 
 test {
     useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat = "full"
+    }
+    maxParallelForks = Runtime.runtime.availableProcessors()
+}
+
+tasks.register('runTests', JavaExec) {
+    mainClass = 'org.qateam.capital.TestLauncher'
+    classpath = sourceSets.test.runtimeClasspath
+
 }

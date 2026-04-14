@@ -1,0 +1,7 @@
+browser:
+  headless: false
+  slow_mo: 1000
+  channel: chrome
+
+retry:
+  attempts: 1
